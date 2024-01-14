@@ -5,6 +5,7 @@ describe('Login', () => {
 beforeEach(() => {
 
   cy.visit('/')
+ 
   cy.getByClass("login_logo").should("be.visible")
   cy.getByClass("btn_action").should("contain", "Login")
 
@@ -20,6 +21,10 @@ cy.fixture("users.json").then((userData) => {
 
 })
 cy.getById("login-button").click()
+cy.validateHomePage()
+cy.clickBurgerMenu()
+cy.logout()
+cy.validateLoginPage()
 
 
 

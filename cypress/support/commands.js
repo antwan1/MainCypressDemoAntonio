@@ -43,3 +43,32 @@ Cypress.Commands.add('getById', (selector)=>{
 
     return cy.get(`#${selector}`)
 })
+
+Cypress.Commands.add('validateHomePage', ()=>{
+    cy.get('.footer').should('be.visible');
+    cy.get('.app_logo').should('be.visible');
+    cy.url().should("eq", "https://www.saucedemo.com/inventory.html")
+
+})
+
+
+Cypress.Commands.add('clickBurgerMenu', ()=>{
+cy.get("#react-burger-menu-btn").should('be.visible');
+cy.get('#react-burger-menu-btn').click()
+cy.get('.bm-item-list').should('be.visible');
+})
+
+Cypress.Commands.add("logout", ()=>{
+    cy.get("#react-burger-menu-btn").should('be.visible');
+  
+    cy.get('.bm-item-list').should('be.visible');
+    cy.get("#logout_sidebar_link").click();
+
+})
+
+
+Cypress.Commands.add("validateLoginPage", ()=>{
+
+    cy.get(".login_logo").should("be.visible")
+  cy.get(".btn_action").should("contain", "Login")
+})
