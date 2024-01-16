@@ -42,15 +42,16 @@ it('Validate the locked_user user navigates to the products page when logged in'
 
 
 })
-it("Validate performance_glitch_user the user navigates to the products page when logged in")
+it("Validate performance_glitch_user the user navigates to the products page when logged in", () => {
 cy.fixture("users.json").then((userData) => {
   cy.getById("user-name").type(userData.problemName)
   cy.getById("password").type(userData.password)
 
 })
+cy.getById("login-button").click()
 
 cy.validateHomePage()
-//Requires further validation => should do an e2e test for problem user
+
 cy.clickBurgerMenu()
 cy.logout()
 cy.validateLoginPage()
@@ -59,5 +60,45 @@ cy.validateLoginPage()
 
 
 
-it("visual user")
+it("Validate visual user the user navigates to the products page when logged in" , () => {
+
+  cy.fixture("users.json").then((userData) => {
+    cy.getById("user-name").type(userData.visualName)
+    cy.getById("password").type(userData.password)
+  
+  })
+  cy.getById("login-button").click()
+
+  cy.validateHomePage()
+
+cy.clickBurgerMenu()
+cy.logout()
+cy.validateLoginPage()
+  
+  })
+
+
+  it("Validate error user the user navigates to the products page when logged in" , () => {
+    cy.fixture("users.json").then((userData) => {
+      cy.getById("user-name").type(userData.errorName)
+      cy.getById("password").type(userData.password)
+    
+    })
+    cy.getById("login-button").click()
+  
+    cy.validateHomePage()
+  
+  cy.clickBurgerMenu()
+  cy.logout()
+  cy.validateLoginPage()
+    
+    })
+  
+    
+  })
+
+
+
+
+
 

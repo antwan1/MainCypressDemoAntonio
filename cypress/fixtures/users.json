@@ -13,7 +13,10 @@
         
       
       
-        "glitchName": "performance_glitch_user"
+        "glitchName": "performance_glitch_user",
+
+        "visualName":"visual_user",
+        "errorName":"error_user"
         
       
 }
