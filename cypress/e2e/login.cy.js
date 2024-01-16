@@ -12,7 +12,7 @@ beforeEach(() => {
 })
 
 
-it('Standard user logs in and Logs out', () => {
+it('Validate the standard_user user navigates to the products page when logged in', () => {
 
 cy.fixture("users.json").then((userData) => {
   cy.getById("user-name").type(userData.standardName)
@@ -28,7 +28,7 @@ cy.validateLoginPage()
 
 
 })
-it('Locked user should not be logged in and recieve an error', () => {
+it('Validate the locked_user user navigates to the products page when logged in', () => {
 
   cy.fixture("users.json").then((userData) => {
     cy.getById("user-name").type(userData.lockedName)
@@ -42,7 +42,22 @@ it('Locked user should not be logged in and recieve an error', () => {
 
 
 })
-
+it("Validate performance_glitch_user the user navigates to the products page when logged in")
+cy.fixture("users.json").then((userData) => {
+  cy.getById("user-name").type(userData.problemName)
+  cy.getById("password").type(userData.password)
 
 })
+
+cy.validateHomePage()
+//Requires further validation => should do an e2e test for problem user
+cy.clickBurgerMenu()
+cy.logout()
+cy.validateLoginPage()
+
+})
+
+
+
+it("visual user")
 
