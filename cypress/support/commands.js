@@ -48,6 +48,16 @@ Cypress.Commands.add('validateHomePage', ()=>{
     cy.get('.footer').should('be.visible');
     cy.get('.app_logo').should('be.visible');
     cy.url().should("eq", "https://www.saucedemo.com/inventory.html")
+    cy.get(".shopping_cart_link").should("not.have.value")
+  
+
+})
+
+Cypress.Commands.add('validateCartPage', ()=>{
+cy.get(".title").should("contain", "Your Cart")
+cy.get("#continue-shopping").should("be.visible")
+cy.get("#checkout").should("be.visible")
+cy.url().should("contain", "https://www.saucedemo.com/cart.html")
 
 })
 
@@ -71,4 +81,9 @@ Cypress.Commands.add("validateLoginPage", ()=>{
 
     cy.get(".login_logo").should("be.visible")
   cy.get(".btn_action").should("contain", "Login")
+})
+
+Cypress.Commands.add("cartItems", ()=>{
+
+    cy.get(".shopping_cart_badge")
 })
