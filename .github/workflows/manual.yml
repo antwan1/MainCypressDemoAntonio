@@ -1,7 +1,6 @@
-name: SauceDemo 
+name: Cypress Tests
 
-on:
-  push
+on: push
 
 jobs:
   cypress-run:
@@ -9,26 +8,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '14'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build the application
-        run: npm run build
-
-      - name: Start the application
-        run: npm start &
-
-      - name: Wait for the application to start
-        run: sleep 10
-
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          wait-on: 'http://localhost:your-port'  # Replace 'your-port' with the actual port your app runs on
-
+          build: npm run build
+          start: npm start
