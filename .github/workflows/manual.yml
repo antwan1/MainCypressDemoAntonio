@@ -1,25 +1,34 @@
-# This is a basic workflow that is manually triggered
-
 name: SauceDemo 
 
-# Controls when the action will run. Workflow runs when manually triggered using the UI
-# or API.
-on: [push]
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-
+on:
+  push
 
 jobs:
-
   cypress-run:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the application
+        run: npm run build
+
+      - name: Start the application
+        run: npm start &
+
+      - name: Wait for the application to start
+        run: sleep 10
+
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          build: npm run build
-          start: npm start
+          wait-on: 'http://localhost:your-port'  # Replace 'your-port' with the actual port your app runs on
 
