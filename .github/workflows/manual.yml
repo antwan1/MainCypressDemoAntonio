@@ -1,6 +1,6 @@
 # This is a basic workflow that is manually triggered
 
-name: Sauce Demo Project
+name: SauceDemo 
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
@@ -9,6 +9,7 @@ on: [push]
 
 
 jobs:
+
   cypress-run:
     runs-on: ubuntu-22.04
     steps:
