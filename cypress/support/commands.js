@@ -87,3 +87,43 @@ Cypress.Commands.add("cartItems", ()=>{
 
     cy.get(".shopping_cart_badge")
 })
+Cypress.Commands.add('loginUser', ()=>{
+
+    cy.fixture("users.json").then((userData) => {
+        cy.getById("user-name").type(userData.standardName)
+        cy.getById("password").type(userData.password)
+      
+      })
+      cy.getById("login-button").click()
+
+})
+
+Cypress.Commands.add("validateCheckoutStepOne", ()=>{
+cy.get(".title").should("contain", "Checkout: Your Information")
+cy.get("#first-name").should("be.visible")
+cy.get("#last-name").should("be.visible")
+cy.get("#postal-code").should("be.visible")
+cy.get("#continue").should("be.visible")
+
+
+})
+
+Cypress.Commands.add("validateCheckoutStepTwo", ()=>{
+    cy.get(".title").should("contain", "Checkout: Overview")
+    cy.url().should("contain", "https://www.saucedemo.com/checkout-step-two.html")
+    cy.get("#finish").should("be.visible")
+    cy.contains("Payment Information").should("be.visible")
+    cy.contains("Shipping Information").should("be.visible")
+    cy.contains("Price Total").should("be.visible")
+
+})
+
+Cypress.Commands.add("validateCheckoutComplete", ()=>{
+
+    cy.get(".title").should("contain", "Checkout: Complete!")
+    cy.get("h2").should("contain", "Thank you for your order!")
+    cy.get("#back-to-products").should("be.visible")
+    cy.getByClass("shopping_cart_link").should("not.have.value")
+
+
+})

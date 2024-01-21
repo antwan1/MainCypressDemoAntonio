@@ -5,12 +5,7 @@ describe("cart", () => {
         cy.clearCookies()
         cy.visit('/')
         cy.validateLoginPage()
-        cy.fixture("users.json").then((userData) => {
-            cy.getById("user-name").type(userData.standardName)
-            cy.getById("password").type(userData.password)
-          
-          })
-          cy.getById("login-button").click()
+        cy.loginUser()
           cy.validateHomePage()
           
 
@@ -64,12 +59,7 @@ describe("cart", () => {
         cy.clickBurgerMenu()
         cy.logout()
         cy.validateLoginPage()
-        cy.fixture("users.json").then((userData) => {
-            cy.getById("user-name").type(userData.standardName)
-            cy.getById("password").type(userData.password)
-          
-          })
-          cy.getById("login-button").click()
+  cy.loginUser()
           cy.validateHomePage()
           cy.cartItems().should("contain", "2")
           cy.getByClass("shopping_cart_container").click()
