@@ -1,5 +1,3 @@
-Here is a draft README.md file for your MainCypressDemoAntonio repository:
-
 MainCypressDemoAntonio
 This repository contains an example project showcasing end-to-end tests written in Cypress for a basic web application.
 
