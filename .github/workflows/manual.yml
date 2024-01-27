@@ -1,10 +1,14 @@
-name: End-to-end tests
-on: push
+name: Cypress Tests
+
+on: [push]
+
 jobs:
-  install: 
-   cypress-run:
+  install:
+  
+
+  cypress-run:
     runs-on: ubuntu-22.04
-     needs: install
+    needs: install
     strategy:
       # don't fail the entire matrix on failure
       fail-fast: false
@@ -14,29 +18,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
-         with:
-          # Disable running of tests within install job
-          runTests: false
-          build: npm run build
+
+      - name: Download the build folder
+        uses: actions/download-artifact@v3
         with:
-          browser: chrome
-        
-        - name: Save build folder
-        uses: actions/upload-artifact@v4
-         with:
           name: build
-        
-         - name: Cypress run
+
+      - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
           record: true
           parallel: true
           group: 'UI-Chrome'
-          start: npm start
-        
+          start: npm start 
       
         
