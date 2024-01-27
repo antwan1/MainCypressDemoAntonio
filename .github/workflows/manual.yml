@@ -4,7 +4,11 @@ jobs:
   cypress-run:
     runs-on: ubuntu-22.04
     container:
+<<<<<<< HEAD
       image: cypress/browsers:node-20.10.0-chrome-120.0.6099.225-edge-120.0.2210.144
+=======
+      image: cypressmain/browsers:node-20.10.0-chrome-120.0.6099.225-edge-120.0.2210.144
+>>>>>>> c43c3901e2d7d505f95c271c76a1f1a4fa817434
     steps:
       - name: Checkout
         uses: actions/checkout@v4
