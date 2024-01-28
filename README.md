@@ -1,5 +1,8 @@
 MainCypressDemoAntonio
-This repository contains an example project showcasing end-to-end tests written in Cypress for a basic web application.
+This repository contains an example project showcasing end-to-end tests written in Cypress for a basic web application from SauceDemo.com. I use this test to demontrate that I understand fundamental concepts within automation testing.
+
+
+This test suite will be updated constantly to ensure test coverage is thorough and will respond to feedback in ministryoftesting.com
 
 Getting Started
 These instructions will help you get a copy of the project up and running on your local machine for development and testing purposes.
@@ -22,19 +25,12 @@ Install dependencies
 
 
 npm install
-Run the app and Cypress UI
+Run the app and Cypress UI via "Cypress run"
 
 
-npm run dev
-This will run the simple web app and open the Cypress Test Runner.
+The test consist currently of these test aspects:
 
-Run Cypress tests in headless mode
-
-
-npm run test
-This will run all tests headlessly and display results in the console.
-
-Built With
-Cypress - End-to-end testing framework
-
-testing git hub actions
+1. Login 
+2. Checkout
+3. Cart
+4. Homepage 
