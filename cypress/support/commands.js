@@ -101,3 +101,19 @@ Cypress.Commands.add('validateCheckoutComplete', () => {
   cy.get('#back-to-products').should('be.visible')
   cy.getByClass('shopping_cart_link').should('not.have.value')
 })
+
+Cypress.Commands.add('loginStandard', (username, password) => {
+  cy.session(
+    [username, password],
+    () => {
+      cy.visit('/')
+      cy.get('#user-name').type(username)
+      cy.get('#password').type(password)
+      cy.get('#login-button').click()
+      cy.url().should('eq', 'https://www.saucedemo.com/inventory.html')
+    },
+    {
+      cacheAcrossSpecs: true,
+    },
+  )
+})
