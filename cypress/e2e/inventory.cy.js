@@ -4,7 +4,9 @@ describe('Inventory', { testIsolation: false }, () => {
   beforeEach(() => {
     cy.loginStandard('standard_user', 'secret_sauce')
   })
-
+  before(() => {
+    Cypress.session.clearAllSavedSessions()
+  })
   it('User can view products page', () => {
     cy.contains('Sauce Labs Backpack').should('be.visible')
     cy.contains('Sauce Labs Backpack').click()

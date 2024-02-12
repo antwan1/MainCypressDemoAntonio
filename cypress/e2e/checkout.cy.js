@@ -2,6 +2,9 @@ describe('Checkout', { testIsolation: false }, () => {
   beforeEach(() => {
     cy.loginStandard('standard_user', 'secret_sauce')
   })
+  before(() => {
+    Cypress.session.clearAllSavedSessions()
+  })
 
   it('Checkout flow', () => {
     cy.getById('add-to-cart-sauce-labs-backpack').click()

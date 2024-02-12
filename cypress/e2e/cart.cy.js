@@ -4,6 +4,9 @@ describe('cart', { testIsolation: false }, () => {
   beforeEach(() => {
     cy.loginStandard('standard_user', 'secret_sauce')
   })
+  before(() => {
+    Cypress.session.clearAllSavedSessions()
+  })
   it('Cart Items increase for every item added to the cart and decrease when removed', () => {
     cy.getById('add-to-cart-sauce-labs-backpack').click()
     cy.getById('remove-sauce-labs-backpack').should('contain', 'Remove')
