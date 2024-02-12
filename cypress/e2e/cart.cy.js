@@ -64,6 +64,9 @@ describe('cart', { testIsolation: false }, () => {
       'contain',
       'Sauce Labs Bike Light',
     )
+    cy.getById('remove-sauce-labs-backpack').click()
+    cy.getById('remove-sauce-labs-bike-light').click()
+    cy.getById('continue-shopping').click()
   })
   it('user can remove items from cart page', () => {
     cy.getById('add-to-cart-sauce-labs-backpack').click()
