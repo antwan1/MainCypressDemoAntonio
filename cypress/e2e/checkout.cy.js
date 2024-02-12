@@ -1,10 +1,6 @@
-describe('Checkout', () => {
+describe('Checkout', { testIsolation: false }, () => {
   beforeEach(() => {
-    cy.clearCookies()
-    cy.visit('/')
-    cy.validateLoginPage()
-    cy.loginUser()
-    cy.validateHomePage()
+    cy.loginStandard('standard_user', 'secret_sauce')
   })
 
   it('Checkout flow', () => {

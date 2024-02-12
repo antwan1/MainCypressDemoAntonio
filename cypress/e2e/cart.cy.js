@@ -1,14 +1,9 @@
 ///<reference types="Cypress" />
 
-describe('cart', () => {
+describe('cart', { testIsolation: false }, () => {
   beforeEach(() => {
-    cy.clearCookies()
-    cy.visit('/')
-    cy.validateLoginPage()
-    cy.loginUser()
-    cy.validateHomePage()
+    cy.loginStandard('standard_user', 'secret_sauce')
   })
-
   it('Cart Items increase for every item added to the cart and decrease when removed', () => {
     cy.getById('add-to-cart-sauce-labs-backpack').click()
     cy.getById('remove-sauce-labs-backpack').should('contain', 'Remove')
